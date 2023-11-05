@@ -38,11 +38,11 @@ const Login = () => {
           //signe Up logic
 
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           navigate('/browse')
         })
         .catch((error) => {
-          const errorCode = error.code;
+          // const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorMessage);
           // ..
@@ -57,12 +57,12 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           navigate("/browse")
        
         })
         .catch((error) => {
-          const errorCode = error.code;
+          // const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorMessage)
         });
