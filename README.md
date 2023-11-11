@@ -7,3 +7,7 @@
 - firebase
 - firebase API sign in sign out
 - redux
+- custom hook, fetching the popular movies data
+- custom hook, fetching the top rated movies data
+- custom hook, fetching the top popular movies data
+- custom hook, fetching the top rated movies data

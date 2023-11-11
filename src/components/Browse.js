@@ -1,12 +1,25 @@
 import React from 'react'
 import Header from './Header'
+import usePopularMovies from '../hooks/usePopularMovies'
+import MainContainer from './MainContainer'
+import SecondaryContainer from './SecondaryContainer'
+import useTopRatedMovies from '../hooks/useTopRatedMovies'
+import useUpcomingMovies from '../hooks/useUpcomingMovies'
 
 const Browse = () => {
+
+  //the custom hooks
+  usePopularMovies()
+  useTopRatedMovies()
+  useUpcomingMovies()
+
+
   return (
-    <div className='bg-black w-screen h-screen'>
+    <div className=''>
       <Header/>
-      <div className='flex items-center justify-center h-screen'>
-            <h1 className='text-white text-xs'>The app is under  Development Phase. We will be soon Live.</h1>
+      <div className=''>
+            <MainContainer/>
+            <SecondaryContainer/>
       </div>
      
     </div>

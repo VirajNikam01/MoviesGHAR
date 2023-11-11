@@ -4,16 +4,19 @@ import validate from "../utility/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utility/firebase";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { addUser } from "../utility/userSlice";
+import { BACKGROUND_IMAGE } from "../utility/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handelSignSignUp = () => {
     setIsSignIn(!isSignIn);
@@ -36,10 +39,28 @@ const Login = () => {
       )
         .then((userCredential) => {
           //signe Up logic
-
           const user = userCredential.user;
-          // console.log(user);
-          navigate('/browse')
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/140100146?v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+
+              dispatch(
+                addUser({
+                  uid: uid,
+                  emsil: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           // const errorCode = error.code;
@@ -57,14 +78,12 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          // console.log(user);
-          navigate("/browse")
-       
+    
         })
         .catch((error) => {
           // const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorMessage)
+          setErrorMessage(errorMessage);
         });
     }
   };
@@ -75,7 +94,7 @@ const Login = () => {
       <div>
         <img
           className=" blur-sm h-screen w-screen"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/0efe6360-4f6d-4b10-beb6-81e0762cfe81/IN-en-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BACKGROUND_IMAGE}
           alt="background"
         />
       </div>
