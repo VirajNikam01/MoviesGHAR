@@ -45,6 +45,7 @@ const Login = () => {
             photoURL: "https://avatars.githubusercontent.com/u/140100146?v=4",
           })
             .then(() => {
+              navigate("/");
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
 
@@ -78,7 +79,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-    
+          navigate("/");
         })
         .catch((error) => {
           // const errorCode = error.code;

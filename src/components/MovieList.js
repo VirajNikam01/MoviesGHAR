@@ -5,9 +5,9 @@ const MovieList = ({ title, movie }) => {
   if (!movie) return;
 
   return (
-    <div className="pl-5 sm:pl-16 relative z-10 ">
+    <div className="pl-5 sm:pl-16 relative z-10 select-none  ">
       <div className="text-white text-xl pb-2 pt-5">{title}</div>
-      <div className=" overflow-x-scroll flex  ">
+      <div className=" overflow-x-scroll overflow-y-hidden flex designScrollbar  ">
         <div className="flex">
           {movie.map((movie, i) => (
             <MovieCard key={i} poster={movie.poster_path} />

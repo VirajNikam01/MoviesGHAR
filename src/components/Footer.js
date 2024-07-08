@@ -11,8 +11,7 @@ const Footer = () => {
           </h1>
         </div>
         <div>
-            <h1 className="text-white text-sm sm:text-lg">Crafted By Viraj Nikam</h1>
-            <h1 className="text-white text-xs sm:text-lg">November 2023</h1>
+            <h1 className="text-slate-200">Crafted With ❤️ in India</h1>
         </div>
       </div>
     </div>
